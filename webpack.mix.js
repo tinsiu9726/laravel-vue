@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 // webpack.config.js
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+
 module.exports = {
     module: {
       rules: [
@@ -41,9 +43,18 @@ module.exports = {
     }
   }
 
-  
+/*
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
-
+*/
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css')
+    .webpackConfig({
+        plugins: [
+            new VuetifyLoaderPlugin({
+                options: {}
+            }),
+        ]
+    }).version().sourceMaps()

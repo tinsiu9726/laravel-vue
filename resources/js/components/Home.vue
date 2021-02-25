@@ -1,44 +1,127 @@
 <template>
-  <v-container fluid class="grey lighten-5">
-    <v-row>
-      <v-col>
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-        >
-          Level 1: .col-sm-9
-        </v-card>
-        <v-row no-gutters>
-          <v-col
-            cols="8"
-            sm="6"
-          >
-            <v-card
-              class="pa-2"
-              outlined
-              style="background-color: lightgrey;"
-              tile
-            >
-              Level 2: .col-8 .col-sm-6
-            </v-card>
-          </v-col>
-          <v-col
-            cols="4"
-            sm="6"
-          >
-            <v-card
-              class="pa-2"
-              outlined
-              style="background-color: lightgrey;"
-              tile
-            >
-              Level 3: .col-4 .col-sm-6
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="content-wrap">
+    <!---->
+    <v-parallax
+      height="400"
+      src="https://i.pinimg.com/originals/be/cf/07/becf07d6e3fd679901a451f2d5d878a3.jpg"
+    >
+      <div>
+        <div class="layout align-center column justify-center">
+          <h1 class="display-4 font-weight-black text-xs-center">Contact Us</h1>
+          <h2>Let us know how we can be better.</h2>
+          <div><br /></div>
+        </div>
+      </div>
+    </v-parallax>
+
+    <br />
+
+    <div class="container">
+      <v-row no-gutters>
+        <v-col cols="12" md="7">
+          <v-card class="pa-4" outlined tile>
+            <p class="headline font-weight-thin">
+              Whether you are looking for specific services in your area or
+              provide services to the autism community we want to hear from you!
+            </p>
+            <p class="headline font-weight-thin">
+              Our goal is to create the best online resource to find the right
+              autism help and we can only do that with your help.
+              <br />
+              <br />Tell us how we're doing, how we can get better, or just say
+              hi 👋
+              <br />
+              <br />Always Listening,
+              <br />
+              <strong>The Spectrum heart Team 💙</strong>
+            </p>
+          </v-card>
+        </v-col>
+        <v-col cols="12" md="5">
+          <div class="m-top v-card v-sheet theme--light elevation-2">
+            <div class="v-card__title display-1 font-weight-thin">
+              Drop us a note
+            </div>
+            <v-container>
+              <v-form ref="form" v-model="valid" lazy-validation>
+                <v-text-field
+                  v-model="name"
+                  :counter="10"
+                  :rules="nameRules"
+                  label="Name"
+                  required
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="email"
+                  :rules="emailRules"
+                  label="E-mail"
+                  required
+                ></v-text-field>
+
+                <v-textarea
+                  clearable
+                  clear-icon="mdi-close-circle"
+                  label="Text"
+                  value="Write your message here!."
+                  required
+                ></v-textarea>
+
+                <v-checkbox
+                  v-model="checkbox"
+                  :rules="[(v) => !!v || 'You must agree to continue!']"
+                  label="Please check before send"
+                  required
+                ></v-checkbox>
+
+                <v-btn
+                  :disabled="!valid"
+                  color="success"
+                  class="mr-4"
+                  @click="validate"
+                >
+                  send
+                </v-btn>
+
+                <!--<v-btn color="warning" @click="resetValidation">
+                Reset Validation
+              </v-btn>-->
+              </v-form>
+            </v-container>
+          </div>
+        </v-col>
+      </v-row>
+    </div>
+  </div>
 </template>
 
+<script>
+export default {
+  data: () => ({
+    valid: true,
+    name: "",
+    nameRules: [
+      (v) => !!v || "Name is required",
+      (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
+    ],
+    email: "",
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    ],
+    checkbox: false,
+  }),
+
+  methods: {
+    validate() {
+      this.$refs.form.validate();
+    },
+    reset() {
+      this.$refs.form.reset();
+    },
+    resetValidation() {
+      this.$refs.form.resetValidation();
+    },
+  },
+};
+</script>
