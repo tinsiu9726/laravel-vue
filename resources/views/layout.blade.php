@@ -28,7 +28,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -59,13 +59,88 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 bg-light" type="submit">Go</button>
                 </form>
             </div>
         </nav>
-
+        
+        <!-- Vue Content -->
         @yield('content')
         <script src="{{ asset('js/app.js') }}"></script>
+        <!-- Vue Content -->
+
+        <!-- Footer -->
+        <footer class="bg-dark text-center text-light">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Footer Content</h5>
+
+                <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+                molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+                voluptatem veniam, est atque cumque eum delectus sint!
+                </p>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Links</h5>
+
+                <ul class="list-unstyled mb-0">
+                <li>
+                    <a href="#!" class="text-light">Link 1</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-light">Link 2</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-light">Link 3</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-light">Link 4</a>
+                </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-0">Links</h5>
+
+                <ul class="list-unstyled">
+                <li>
+                    <a href="#!" class="text-light">Link 1</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-light">Link 2</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-light">Link 3</a>
+                </li>
+                <li>
+                    <a href="#!" class="text-light">Link 4</a>
+                </li>
+                </ul>
+            </div>
+            <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
 
     </body>
     

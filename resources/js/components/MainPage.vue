@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
-  <v-footer
+  <!--<v-footer
     dark
     padless
   >
@@ -33,11 +33,11 @@
         {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
       </v-card-text>
     </v-card>
-  </v-footer>
+  </v-footer>-->
   </div>
 </template>
 
-<script>
+<!--<script>
   export default {
     data: () => ({
       icons: [
@@ -48,4 +48,4 @@
       ],
     }),
   }
-</script>
+</script>-->
