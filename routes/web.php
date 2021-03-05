@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/','App\Http\Controllers\WebController@index');
+Route::get('/form','App\Http\Controllers\WebController@index');
 Route::get('/address','App\Http\Controllers\WebController@index');
 
 /*
