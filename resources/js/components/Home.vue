@@ -16,10 +16,9 @@
 
     <br />
 
-    <div class="container">
+    <v-container>
       <v-row no-gutters>
-        <v-col cols="12" md="7">
-          <v-card class="pa-4" outlined tile>
+        <v-col class="pa-4" cols="12" md="7">
             <p class="headline font-weight-thin">
               Whether you are looking for specific services in your area or
               provide services to the autism community we want to hear from you!
@@ -35,7 +34,6 @@
               <br />
               <strong>The Spectrum heart Team 💙</strong>
             </p>
-          </v-card>
         </v-col>
         <v-col cols="12" md="5">
           <div class="m-top v-card v-sheet theme--light elevation-2">
@@ -62,8 +60,7 @@
                 <v-textarea
                   clearable
                   clear-icon="mdi-close-circle"
-                  label="Text"
-                  value="Write your message here!."
+                  label="Write your message here!."
                   required
                 ></v-textarea>
 
@@ -75,7 +72,7 @@
                 ></v-checkbox>
 
                 <v-btn
-                  :disabled="!valid"
+                  
                   color="success"
                   class="mr-4"
                   @click="validate"
@@ -91,7 +88,7 @@
           </div>
         </v-col>
       </v-row>
-    </div>
+    </v-container>
   </div>
 </template>
 
@@ -125,3 +122,14 @@ export default {
   },
 };
 </script>
+
+<style>
+.v-col {
+  border: none;
+  border-color: transparent;
+}
+.v-card {
+  border: none;
+  border-color: transparent;
+}
+</style>
