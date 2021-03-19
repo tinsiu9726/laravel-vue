@@ -24,41 +24,43 @@
             >
               Personal information
             </v-card-title>
-              
-                <v-subheader class="pa-0"> Where do you live? </v-subheader>
-                <v-card-text>
-                  <v-autocomplete
-                    v-model="model"
-                    :hint="
-                      !isEditing
-                        ? 'Click the icon to edit'
-                        : 'Click the icon to save'
-                    "
-                    :items="states"
-                    :readonly="!isEditing"
-                    :label="`State — ${isEditing ? 'Editable' : 'Readonly'}`"
-                    persistent-hint
-                    prepend-icon="mdi-city"
-                  >
-                    <template v-slot:append-outer>
-                      <v-slide-x-reverse-transition mode="out-in">
-                        <v-icon
-                          :key="`icon-${isEditing}`"
-                          :color="isEditing ? 'success' : 'info'"
-                          @click="isEditing = !isEditing"
-                          v-text="
-                            isEditing
-                              ? 'mdi-check-outline'
-                              : 'mdi-circle-edit-outline'
-                          "
-                        ></v-icon>
-                      </v-slide-x-reverse-transition>
-                    </template>
-                  </v-autocomplete>
-                </v-card-text>
-                
-              <v-container>
-                <v-form ref="form" v-model="valid" lazy-validation>
+
+            <!--<v-card-text>
+              <v-autocomplete
+                v-model="model"
+                :hint="
+                  !isEditing
+                    ? 'Click the icon to edit'
+                    : 'Click the icon to save'
+                "
+                :items="states"
+                :readonly="!isEditing"
+                :label="`State — ${isEditing ? 'Editable' : 'Readonly'}`"
+                persistent-hint
+                prepend-icon="mdi-city"
+              >
+                <template v-slot:append-outer>
+                  <v-slide-x-reverse-transition mode="out-in">
+                    <v-icon
+                      :key="`icon-${isEditing}`"
+                      :color="isEditing ? 'success' : 'info'"
+                      @click="isEditing = !isEditing"
+                      v-text="
+                        isEditing
+                          ? 'mdi-check-outline'
+                          : 'mdi-circle-edit-outline'
+                      "
+                    ></v-icon>
+                  </v-slide-x-reverse-transition>
+                </template>
+              </v-autocomplete>
+            </v-card-text>-->
+
+            <v-container>
+              <v-subheader class="pa-0">
+                Please fill below questions
+              </v-subheader>
+              <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
                   v-model="name"
                   :counter="10"
@@ -74,29 +76,35 @@
                   required
                 ></v-text-field>
 
+                <v-radio-group>
+                  Gender
+                  <v-radio :label="`Male`" :value="1"></v-radio>
+                  <v-radio :label="`Female`" :value="2"></v-radio>
+                </v-radio-group>
+
+                <v-select
+                  :items="items"
+                  label="How to know us?"
+                  dense
+                ></v-select>
+
                 <v-textarea
                   clearable
                   clear-icon="mdi-close-circle"
-                  label="Write your message here!."
+                  label="What is your hobby?"
                   required
                 ></v-textarea>
 
                 <v-checkbox
                   v-model="checkbox"
                   :rules="[(v) => !!v || 'You must agree to continue!']"
-                  label="Please check before send"
+                  label="Please click agree"
                   required
                 ></v-checkbox>
 
-                <v-btn
-                  
-                  color="success"
-                  class="mr-4"
-                  @click="validate"
-                >
+                <v-btn color="success" class="mr-4" @click="validate">
                   send
                 </v-btn>
-
               </v-form>
             </v-container>
           </v-card>
@@ -106,111 +114,11 @@
   </div>
 </template>
 
-<!--<script>
-  export default {
-    data: () => ({
-      valid: true,
-      name: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
-      checkbox: false,
-    }),
-
-    methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
-      reset () {
-        this.$refs.form.reset()
-      },
-      resetValidation () {
-        this.$refs.form.resetValidation()
-      },
-    },
-  }
-</script>-->
-
 <script>
 export default {
   data() {
     return {
-      isEditing: false,
-      model: null,
-      states: [
-        "Alabama",
-        "Alaska",
-        "American Samoa",
-        "Arizona",
-        "Arkansas",
-        "California",
-        "Colorado",
-        "Connecticut",
-        "Delaware",
-        "District of Columbia",
-        "Federated States of Micronesia",
-        "Florida",
-        "Georgia",
-        "Guam",
-        "Hawaii",
-        "Idaho",
-        "Illinois",
-        "Indiana",
-        "Iowa",
-        "Kansas",
-        "Kentucky",
-        "Louisiana",
-        "Maine",
-        "Marshall Islands",
-        "Maryland",
-        "Massachusetts",
-        "Michigan",
-        "Minnesota",
-        "Mississippi",
-        "Missouri",
-        "Montana",
-        "Nebraska",
-        "Nevada",
-        "New Hampshire",
-        "New Jersey",
-        "New Mexico",
-        "New York",
-        "North Carolina",
-        "North Dakota",
-        "Northern Mariana Islands",
-        "Ohio",
-        "Oklahoma",
-        "Oregon",
-        "Palau",
-        "Pennsylvania",
-        "Puerto Rico",
-        "Rhode Island",
-        "South Carolina",
-        "South Dakota",
-        "Tennessee",
-        "Texas",
-        "Utah",
-        "Vermont",
-        "Virgin Island",
-        "Virginia",
-        "Washington",
-        "West Virginia",
-        "Wisconsin",
-        "Wyoming",
-      ],
+      radioGroup: 1,
     };
   },
   data: () => ({
@@ -225,6 +133,8 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
+    select: null,
+    items: ["ad.", "Friends", "Website", "Others"],
     checkbox: false,
   }),
 
@@ -241,3 +151,4 @@ export default {
   },
 };
 </script>
+
